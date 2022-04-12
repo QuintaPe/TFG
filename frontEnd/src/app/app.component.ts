@@ -12,12 +12,6 @@ export class AppComponent {
   title = 'frontEnd';
 
   constructor(
-    private auth: AuthService,
-    private router: Router
+    public router: Router
   ) {}
-
-  cerrarSesion() {
-    this.auth.logout();
-    this.router.navigate(['login']);
-  }
 }

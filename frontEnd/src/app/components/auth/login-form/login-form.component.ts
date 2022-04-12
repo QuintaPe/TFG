@@ -3,7 +3,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 
-import { AuthGuard } from 'src/app/guards/auth.guard';
 import { AuthService } from "../../../services/auth.service";
 
 
