@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -18,10 +18,16 @@ import { AuthGuard } from './guards/auth.guard';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NoAuthGuard } from './guards/noauth.guard';
 
+// import ngx-translate and the http loader
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
 export function tokenGetter() {
 	return localStorage.getItem("access_token");
 }
-
+export const createTranslateLoader = (http: HttpClient) => {
+  return new TranslateHttpLoader(http, './i18n/', '.json');
+}
 
 @NgModule({
 	declarations: [
@@ -47,7 +53,14 @@ export function tokenGetter() {
 			  allowedDomains: ["localhost:4200"],
 			  disallowedRoutes: [""],
 			},
-		  }),
+		}),
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+			}
+		})
 	],
 	providers: [
 		AuthService, 

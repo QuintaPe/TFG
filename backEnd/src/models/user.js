@@ -5,10 +5,22 @@ const userSchema = new Schema(
     {
         username: { type: String, required: true },
         password: { type: String, required: true },
-        name: { type: String, required: true },
-        lastName: { type: String, required: true },
-        email: { type: String, required: true },
-        phone: { type: String, required: true }
+        rol: { type: Number, required: true },
+        
+        //Grupo
+        groupName: { type: String },
+
+        //Admin-Gestor
+        name: { type: String },
+        lastName: { type: String },
+        camping: { type: String },
+
+        //Ambos
+        city: { type: String },
+        address: { type: String },
+        zip: { type: String },
+        email: { type: String },
+        phone: { type: String },
     },
     {
         versionKey: false,

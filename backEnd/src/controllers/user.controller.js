@@ -8,15 +8,37 @@ userCtrl.getUsers = async (req, res, next) => {
 };
 
 
-userCtrl.createUser = async (req, res, next) => {
-    const user = new User({
-        name: req.body.name,
+userCtrl.createGroup = async (req, res, next) => {
+    const group = new User({
         username: req.body.username,
-        email: req.body.email,
         password: req.body.password,
+        rol: 0,
+        
+        groupName: req.body.groupName,
+        city: req.body.city,
+        address: req.body.address,
+        email: req.body.email,
+        phone: req.body.phone,
+    });
+    await group.save();
+    res.json({ status: "Group created" });
+};
+
+userCtrl.createAdmin = async (req, res, next) => {
+    const user = new User({
+        username: req.body.username,
+        password: req.body.password,
+        rol: req.body.rol,
+        
+        name: req.body.name,
+        lastName: req.body.name,
+        city: req.body.city,
+        address: req.body.address,
+        email: req.body.email,
+        phone: req.body.phone,
     });
     await user.save();
-    res.json({ status: "User created" });
+    res.json({ status: "Gestor/Admin created" });
 };
 
 

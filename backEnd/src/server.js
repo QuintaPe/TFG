@@ -19,6 +19,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/users', require('./routes/user.routes'));
+app.use('/api/campings', require('./routes/camping.routes'));
 app.use('/api', require('./routes/login.routes'));
 
 

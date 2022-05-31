@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
     selector: 'app-signup-form',
     templateUrl: './signup-form.component.html',
-    styleUrls: ['./signup-form.component.css'],
+    styleUrls: ['./signup-form.component.scss'],
     providers: [AuthService],
     animations: [
         trigger('enterState', [

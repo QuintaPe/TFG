@@ -1,4 +1,12 @@
 <app-nav-bar *ngIf="this.router.url !== '/'"></app-nav-bar>
 
-<router-outlet></router-outlet>
+<label>
+    change
+    <select #langSelect (change)='changeLang(langSelect.value)'>
+        <option *ngFor="let lang of langs">
+            {{ lang }}
+        </option>
+    </select>
+</label>
 
+<router-outlet></router-outlet>
