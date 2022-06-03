@@ -1,35 +1,37 @@
-<section class="hola vh-100">
-    <div class="container pt-4">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-12 col-xl-11">
-          <div class="card text-black">
-            <div class="card-body p-md-5">
-              <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-  
-                  <app-signup-form  *ngIf="this.router.url == '/signup'" (errors)="showAlert($event)"></app-signup-form>
-                  <app-login-form   *ngIf="this.router.url == '/login' " (errors)="showAlert($event)"></app-login-form>
-    
-                </div>
+<section class="section">
+  <div class="container">
+    <div class="card-wrapper">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+          <app-signup-form *ngIf="this.router.url == '/signup'" (errors)="showAlert($event)"></app-signup-form>
+          <app-login-form *ngIf="this.router.url == '/login'" (errors)="showAlert($event)"></app-login-form>
+        </div>
 
-
-                <div class="col-md-10 col-lg-6 col-xl-5 offset-xl-2 align-items-center order-1 order-lg-2">
-
-                    <div class="alert alert-danger alert-dismissible fade show position-absolute top-10 end-10" role="alert"  *ngIf="this.getAlert">
-                        <strong>{{this.getErrors}</strong> 
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="removeAlert()">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-  
-                  <img src="../../../assets/auth.image.png" 
-                    class="img-fluid" style="margin-top: 120px;" alt="Sample image">
-  
-                </div>
-              </div>
-            </div>
+        <div class="col-12 col-md-6 d-flex align-items-center">
+          <div
+            class="alert alert-danger alert-dismissible fade show position-absolute top-10 end-10"
+            role="alert"
+            *ngIf="this.getAlert"
+          >
+            <strong>{{this.getErrors}</strong>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+              (click)="removeAlert()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
+
+          <img
+            src='../../../assets/auth.image.png'
+            class="img"
+            alt="Sample image"
+          />
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
