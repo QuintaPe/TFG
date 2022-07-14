@@ -1,0 +1,111 @@
+<div *ngIf="!this.page" @enterState>
+    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="next()" autocomplete="off">  
+        <p class="text-center h1 fw-bold ">Crea una cuenta</p>
+        <!-- Name -->
+        <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill">
+                <input type="text" name="name" formControlName="name"
+                    placeholder="Escriba su nombre" class="form-control">
+                <label class="form-label">Nombre</label>
+                <p *ngIf="!registerForm?.get('name')?.valid && registerForm?.get('name')?.touched">Introduzca un nombre valido</p>
+            </div>
+        </div>
+
+        <!-- LastName -->
+        <div class="d-flex flex-row align-items-center">
+            <i class="far fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill">
+                <input type="text" id="lastName"  name="lastName" formControlName="lastName"
+                    placeholder="Escriba sus apellidos" class="form-control">
+                <label class="form-label" for="lastName">Apellidos</label>
+            </div>
+        </div>
+
+        <!-- Birth Date -->
+        <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-calendar-alt fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill">
+                <input type="text" id="birthDate"  name="birthDate" formControlName="birthDate" onfocus="(this.type='date')"
+                class="form-control" placeholder="Escriba su fecha de nacimiento">
+                <label class="form-label" for="birthDate">Fecha de nacimiento</label>
+            </div>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-mobile-alt fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill">
+                <input type="text" id="phone"  name="phone" formControlName="phone"
+                    placeholder="Escriba su numero de teléfono" class="form-control">
+                <label class="form-label" for="form3Example4cd">Teléfono</label>
+            </div>
+        </div>
+               
+        <!-- Next Button -->
+        <div class="d-flex flex-column justify-content-center">
+            <p>¿Ya tienes una cuenta? <a href="/login">Inicia Sesión</a></p>
+            <app-button type="submit" text="Siguiente" iconRight="fas fa-arrow-right"></app-button>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="this.page" @enterState>
+    <form class="register-form" [formGroup]="registerForm2" (ngSubmit)="signup()">
+        <p class="text-center h1 fw-bold ">Crea una cuenta</p>
+        <!-- User Name-->
+        <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill">
+                <input type="text" id="username" name="username" formControlName="username"
+                    placeholder="Escriba su nombre de usuario" class="form-control">
+                <label class="form-label" for="username">Nombre de usuario</label>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill">
+                <input type="email" id="email"  name="email" formControlName="email"
+                    placeholder="Escriba su email" class="form-control">
+                <label class="form-label" for="email">Email</label>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill">
+                <input type="password" id="password" name="password" formControlName="password"
+                    placeholder="Escriba una contraseña" class="form-control">
+                <label class="form-label" for="password2">Contraseña</label>
+            </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="d-flex flex-row align-items-center">
+            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill">
+                <input type="password" id="password2" name="password2" formControlName="password2"
+                    placeholder="Repita la contraseña" class="form-control">
+                <label class="form-label" for="password2">Confirmar contraseña</label>
+            </div>
+        </div>
+
+        <!-- Terms of Services -->
+        <div class="form-check d-flex justify-content-center">
+            <input class="form-check-input me-2" type="checkbox"  id="Terms"/>
+            <label class="form-check-label" for="Terms">
+                Acepto los <a href="#!">Terminos de servicio</a>
+            </label>
+        </div>
+
+        <!-- Register button -->
+        <div class="d-flex justify-content-center">
+            <app-button text="Atras" class='me-3' color='secondary' icon="fas fa-arrow-left" (onClick)="this.page=false"></app-button>
+            <app-button type="submit" text="Registrarse" iconRight="fas fa-user-plus"></app-button>    
+        </div>
+
+    </form>
+</div>

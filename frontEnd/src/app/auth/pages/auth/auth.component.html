@@ -1,0 +1,33 @@
+<app-panel>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <app-signup-form *ngIf="this.router.url == '/signup'" [setErrors]='setErrors'></app-signup-form>
+      <app-login-form *ngIf="this.router.url == '/login'" [setErrors]='setErrors'></app-login-form>
+    </div>
+
+    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center position-relative">
+      <div
+        class="alert alert-danger fade show position-absolute top-0 end-0"
+        role="alert"
+        *ngIf="this.errors"
+      >
+        <strong>{{this.errors}}</strong>
+        <button
+          type="button"
+          class="close ml-4"
+          data-dismiss="alert"
+          aria-label="Close"
+          (click)="this.errors = ''"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <img
+        src='../../../assets/svg/fire.svg'
+        class="img-fluid login-img"
+        alt="Campfire"
+      />
+    </div>
+  </div>
+</app-panel>

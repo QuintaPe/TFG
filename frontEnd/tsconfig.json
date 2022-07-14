@@ -6,7 +6,11 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@assets/*": ["src/assets/*"],
+      "@guards/*": ["src/guards/*"],
       "@services/*": ["src/app/services/*"],
+      "@auth/*": ["src/app/auth/*"],
+      "@user/*": ["src/app/user/*"],
+      "@shared/*": ["src/app/shared/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -32,6 +36,6 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
   }
 }

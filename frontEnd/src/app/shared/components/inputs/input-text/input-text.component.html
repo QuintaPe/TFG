@@ -1,0 +1,15 @@
+<div class='input_text {{this.class}}'>
+  <div class="pre_text {{this.error ? 'text_error' : ''}}">
+    <span>{{preText}}</span>
+    <span *ngIf='isRequired' class='is_required'>*</span>
+  </div>
+  <input
+    class="input {{this.error ? 'input_error' : ''}}"
+    type='text'
+    [placeholder]='placeholder'
+    [disabled]='isDisabled'
+    [(ngModel)]='value'
+    (keyup)='this.emitEvent()'
+    [name]="this.name"
+  />
+</div>

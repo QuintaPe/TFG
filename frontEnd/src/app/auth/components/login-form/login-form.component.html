@@ -1,0 +1,47 @@
+<form
+  class="login-form"
+  [formGroup]="loginForm"
+  (ngSubmit)="login()"
+  @enterState
+>
+  <p class="text-center h1 fw-bold">
+    {{ "LOGIN" | translate }}
+  </p>
+  <!-- Nombre de usuario-->
+  <div class="d-flex flex-row align-items-center">
+    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+    <div class="form-outline flex-fill">
+      <input
+        type="text"
+        id="username"
+        name="username"
+        formControlName="username"
+        placeholder="Escriba su nombre de usuario"
+        class="form-control"
+      />
+      <label class="form-label" for="username">Nombre de usuario</label>
+    </div>
+  </div>
+
+  <!-- Contraseña -->
+  <div class="d-flex flex-row align-items-center">
+    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+    <div class="form-outline flex-fill">
+      <input
+        type="password"
+        id="password"
+        name="password"
+        formControlName="password"
+        placeholder="Escriba una contraseña"
+        class="form-control"
+      />
+      <label class="form-label" for="password">Contraseña</label>
+    </div>
+  </div>
+
+  <!-- Boton de inicio de sesion -->
+  <div class="d-flex flex-column justify-content-center">
+    <p>¿Aún no estas registrado? <a href="/signup">Registrate gratis!</a></p>
+    <app-button text='Iniciar Sesion!' icon="fas fa-user-plus" type="submit"></app-button>
+  </div>
+</form>
