@@ -1,4 +1,11 @@
 .login-img {
-    margin-top: 20px;
-    max-height: 400px;
+  margin-top: 30px;
+  height: auto;
+  width:80%;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

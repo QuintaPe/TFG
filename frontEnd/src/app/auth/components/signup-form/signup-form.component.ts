@@ -56,6 +56,8 @@ export class SignupFormComponent implements OnInit{
       ]),
     });
 
+    console.log(!this.registerForm.controls['phone'].valid && this.registerForm.controls['phone'].touched)
+
     this.registerForm2 = new FormGroup({
       username: new FormControl('', [Validators.required]),
       email: new FormControl('', [

@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class EditAccountComponent implements OnInit {
   langs: string[] = [];
-  user?: User;
+  user: User = new User();
   email='';
   name='';
   lastName=''
@@ -25,18 +25,38 @@ export class EditAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.langs = this.translate.getLangs();
-    this.userService.getUser(this.authService.miId()).subscribe({
-      next: (user) => {
-        this.email = user.email;
-        this.name = user.name;
-        this.lastName = user.lastName;
-        this.birthDate = user.birthDate;
-      },
-      error: (err) => console.log(err),
-    });
+    const miId = this.authService.miId();
+    console.log(miId)
+    if (miId) {
+      this.userService.getUser(miId).subscribe({
+        next: (user) => {
+          console.log(user)
+          this.user = user
+          this.email = user.email;
+          this.name = user.name;
+          this.lastName = user.lastName;
+          this.birthDate = user.birthDate;
+        },
+        error: (err) => console.log(err),
+      });
+    }
   }
 
   changeLang = (lang: string) => {
     this.translate.use(lang);
+  }
+
+  updateProfile = () => {
+    const updatedUser = {...this.user, name: this.name, lastName: this.lastName, birthDate: this.birthDate}
+    if (this.user._id){
+      console.log('act')
+      this.userService.putUser(updatedUser).subscribe({
+        next: (user) => {
+          console.log(user)
+        },
+        error: (err) => console.log(err),
+      });
+    
+    }
   }
 }

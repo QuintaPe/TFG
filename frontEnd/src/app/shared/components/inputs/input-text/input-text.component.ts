@@ -7,12 +7,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 
 export class InputTextComponent implements OnInit {
+  @Input() type:string ='text';
   @Input() class:string ='';
+  @Input() icon:string ='';
   @Input() preText:string = '';
   @Input() placeholder:string = '';
   @Input() isRequired:boolean = false;
   @Input() isDisabled:boolean = false;
-  @Input() value: string = '';
+  @Input() value: string | null = '';
   @Input() name: string = '';
   @Input() error: string = '';
   @Output() valueChange = new EventEmitter<string>();
@@ -24,7 +26,7 @@ export class InputTextComponent implements OnInit {
   }
   
   emitEvent() {
-    this.valueChange.emit(this.value);
+    this.valueChange.emit(this.value || '');
     console.log(this.value)
   }
 
